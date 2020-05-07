@@ -242,7 +242,7 @@ export default {
   methods:{
     //获取今日榜单列表
     getDayLisy(){
-      this.axios.get('http://tingapi.ting.baidu.com/v1/restserver/ting')
+      this.axios.get('http://yapi.shangyuninfo.com/mock/36/web02/category')
       .then(result=>{
         console.log(result)
       })
