@@ -1,3 +1,29 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@fengchunwei 
+FM3631
+/
+vueMusic
+1
+11
+ Code
+ Issues 0
+ Pull requests 1 Actions
+ Projects 0
+ Wiki
+ Security 0
+ Insights
+vueMusic/src/components/tablebar/HomeContainer.vue
+@FM3631 FM3631 分支测试
+79eb564 6 hours ago
+286 lines (279 sloc)  9.99 KB
+  
 <template>
   <div>
     <div class="mui-card">
@@ -236,7 +262,18 @@ export default {
       selected: "1"
     };
   },
+  created(){
+    this.getDayLisy()
+  },
   methods:{
+    //获取今日榜单列
+    getDayLisy(){
+      this.axios.get('http://yapi.shangyuninfo.com/mock/36/web02/category')
+      .then(result=>{
+        console.log(result)
+      })
+      .then()
+    }
   }
 };
 </script>
@@ -263,7 +300,6 @@ export default {
 .mui-card-header{
   font-size: 14px;
 }
-
 /* 轮播图 */
 .mint-swipe {
   height: 200px;
@@ -273,3 +309,15 @@ export default {
   height: 100%;
 }
 </style>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
