@@ -60,7 +60,7 @@ export default {
     return {};
   },
   created() {
-    this.getMusicList();
+    // this.getMusicList();
   },
   methods: {
     //   getMusicList(){
