@@ -6,7 +6,7 @@
           <span class="mui-tab-label" ><i class=" mui-icon-extra mui-icon-extra-custom" style="background:#64d6d0; color:#fff; border-radius: 50%;"></i></span>
         </router-link>
         <router-link class="mui-tab-item-wh" to="/SingerContainer">
-          <span class="mui-tab-label">歌手</span>
+          <span class="mui-tab-label">哈哈哈</span>
         </router-link>
         <router-link class="mui-tab-item-wh" to="/ListContainer">
           <span class="mui-tab-label">榜单</span>
