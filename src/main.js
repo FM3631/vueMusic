@@ -7,6 +7,7 @@ import './all.css'
 //导入axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+Vue.prototype.$axios = axios
 Vue.use(VueAxios, axios)
 Vue.prototype.HOST = '/api'
 

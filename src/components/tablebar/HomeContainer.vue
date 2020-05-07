@@ -4,8 +4,8 @@
       <div class="mui-card-header">
         <div style="float:left">今日榜单</div>
         <div style="float:right; font-size:12px;">
-          <router-link to='/DayList'>更多</router-link>
-          </div>
+          <router-link to="/DayList">更多</router-link>
+        </div>
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -230,28 +230,31 @@
   </div>
 </template>
 <script>
-  export default {
-    name:'todayList',
-    data(){
-      return {
-      todayData:[],
-      selected:'1'
-      }
-      },
-    props:{song_id:{type:String, default:''}},
-    created(){
-     let todayUrl = this.HOST + 'baidu.ting.song.play {songid: id}'
-      this.axios.get(todayUrl)
-        .then(res => {
-          this.todayData = res.data.result.list;
-        }).catch(error => {
-         console.log(error);
-      })
-    }
+export default {
+  name: "todayList",
+  data() {
+    return {
+      selected: "1"
+    };
+  },
+
+  created() {
+    this.getMusicList()
+  },
+  methods:{
+    getMusicList(){
+           const musicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=2'
+           this.$axios.get(musicListUrl)
+           .then(res=>{
+             console.log(res)
+           })
+           .catch()
+       }
   }
+};
 </script>
 <style scoped>
-.body{
+.body {
   font-size: 14px;
 }
 .imgs {
@@ -270,7 +273,7 @@
   text-align: center;
   margin-bottom: 0;
 }
-.mui-card-header{
+.mui-card-header {
   font-size: 14px;
 }
 

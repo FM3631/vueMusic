@@ -60,15 +60,17 @@ export default {
     return {};
   },
   created() {
-    // this.getMusicList();
+     this.getMusicList();
   },
   methods: {
-    //   getMusicList(){
-    //       this.$axios.get('http://tingapi.ting.baidu.com/v1/restserver/ting&baidu.ting.search.catalogSug')
-    //       .then(result => {
-    //       this.musicList = )
-    //       .catch()
-    //   }
+       getMusicList(){
+           const musicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1'
+           this.$axios.get(musicListUrl)
+           .then(res=>{
+             console.log(res)
+           })
+           .catch()
+       }
   }
 };
 </script>
