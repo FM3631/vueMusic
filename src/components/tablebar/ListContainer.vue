@@ -1,6 +1,6 @@
 <template>
     <div>
-        这是榜单页面
+        这是榜单页面aaaaaaaaaaabbbbbaaaaa
     </div>
 </template>
 <script>
