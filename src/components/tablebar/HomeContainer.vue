@@ -230,26 +230,25 @@
   </div>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      selected: "1"
-    };
-  },
-  created(){
-    this.getDayLisy()
-  },
-  methods:{
-    //获取今日榜单列表
-    getDayLisy(){
-      this.axios.get('http://yapi.shangyuninfo.com/mock/36/web02/category')
-      .then(result=>{
-        console.log(result)
+  export default {
+    name:'todayList',
+    data(){
+      return {
+      todayData:[],
+      selected:'1'
+      }
+      },
+    props:{song_id:{type:String, default:''}},
+    created(){
+     let todayUrl = this.HOST + 'baidu.ting.song.play {songid: id}'
+      this.axios.get(todayUrl)
+        .then(res => {
+          this.todayData = res.data.result.list;
+        }).catch(error => {
+         console.log(error);
       })
-      .then()
     }
   }
-};
 </script>
 <style scoped>
 .body{

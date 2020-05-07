@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      //代理
+      "/apiMusic": {
+        target: "http://tingapi.ting.baidu.com/v1/restserver/ting",
+        changeOrigin: true,
+        pathRewrite: {'^/apiMusic': ''}
+      },
+      
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

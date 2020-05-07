@@ -8,16 +8,13 @@ import './all.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
+Vue.prototype.HOST = '/api'
 
 //导入mint-ui
 import '../node_modules/mint-ui/lib/style.css'
 import Mint from 'mint-ui';
 Vue.use(Mint);
-/* import { Swipe, SwipeItem ,Navbar, TabItem} from 'mint-ui';
-Vue.component(Navbar.name, Navbar);
-Vue.component(TabItem.name, TabItem);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem); */
+
 
 // 引入mui
 import './lib/mui/css/mui.min.css'
