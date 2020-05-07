@@ -236,18 +236,18 @@ export default {
       selected: "1"
     };
   },
-  created(){
-    this.getDayLisy()
-  },
+  // created(){
+  //   this.getDayLisy()
+  // },
   methods:{
     //获取今日榜单列表
-    getDayLisy(){
-      this.axios.get('http://tingapi.ting.baidu.com/v1/restserver/ting')
-      .then(result=>{
-        console.log(result)
-      })
-      .then()
-    }
+    // getDayLisy(){
+    //   this.axios.get('http://tingapi.ting.baidu.com/v1/restserver/ting')
+    //   .then(result=>{
+    //     console.log(result)
+    //   })
+    //   .then()
+    // }
   }
 };
 </script>
