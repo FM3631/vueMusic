@@ -237,17 +237,22 @@ export default {
     };
   },
   created(){
-    this.getDayLisy()
+    // this.getDayLisy()
   },
   methods:{
     //获取今日榜单列表
-    getDayLisy(){
-      this.axios.get('http://yapi.shangyuninfo.com/mock/36/web02/category')
+    /* getDayLisy(){
+      const DayListUrl = this.HOST + ""
+      this.$axios.get(DayListUrl,{
+        type:1,
+        size:10, 
+        offset:0
+      })
       .then(result=>{
         console.log(result)
       })
       .then()
-    }
+    } */
   }
 };
 </script>
