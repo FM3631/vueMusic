@@ -1,6 +1,6 @@
 <template>
   <div>
-      这是我的界面
+      这是我的的界面
   </div>
 </template>
 <script>
