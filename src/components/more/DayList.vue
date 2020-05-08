@@ -1,7 +1,7 @@
 <template>
     <div>
         <h4 style="margin:10px">今日榜单</h4>
-        <router-link to="PlayMusic" class="musicBox" v-for='item in picList' :key='item.id'>
+        <router-link :to="'PlayMusic/'+item.song_id" class="musicBox" v-for='item in picList' :key='item.id'>
             <img :src="item.pic_big" alt="">
              <p>{{item.title}}</p>
         </router-link>

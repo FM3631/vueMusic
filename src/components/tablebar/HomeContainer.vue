@@ -24,7 +24,7 @@
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <router-link to="PlayMusic" class="imgs" v-for='item in newPicList' :key="item.id">
+          <router-link :to="'PlayMusic/'+item.song_id" class="imgs" v-for='item in newPicList' :key="item.id">
             <img :src="item.pic_big" alt />
             <p>{{item.album_title}}</p>
             <p>{{item.artist_name}}</p>
@@ -65,7 +65,7 @@
           <mt-tab-container v-model="selected">
             <mt-tab-container-item id="1">
               <ul class="mui-table-view">
-                <router-link to="PlayMusic" class="mui-table-view-cell mui-media" v-for='item in musicNewList' :key='item.id'>
+                <router-link :to="'PlayMusic/'+item.song_id" class="mui-table-view-cell mui-media" v-for='item in musicNewList' :key='item.id'>
                   <a href="javascript:;">
                     <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
@@ -78,7 +78,7 @@
             </mt-tab-container-item>
             <mt-tab-container-item id="2">
               <ul class="mui-table-view">
-                <router-link to="PlayMusic" class="mui-table-view-cell mui-media" v-for='item in musicHotList' :key='item.id'>
+                <router-link :to="'PlayMusic/'+item.song_id" class="mui-table-view-cell mui-media" v-for='item in musicHotList' :key='item.id'>
                   <a href="javascript:;">
                     <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
@@ -92,7 +92,7 @@
             </mt-tab-container-item>
             <mt-tab-container-item id="3">
               <ul class="mui-table-view">
-                <router-link to="PlayMusic" class="mui-table-view-cell mui-media" v-for='item in musicKingList' :key='item.id'>
+                <router-link :to="'PlayMusic/'+item.song_id" class="mui-table-view-cell mui-media" v-for='item in musicKingList' :key='item.id'>
                   <a href="javascript:;">
                     <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
@@ -118,8 +118,8 @@
         <div style="float:right; font-size:12px;">更多</div>
       </div>
       <div class="mui-card-content">
-        <router-link to="PlayMusic" class="mui-card-content-inner">
-          <div class="imgs" v-for='item in footerMusicList' :key='item.id'>
+        <router-link :to="'PlayMusic/'+item.song_id" class="mui-card-content-inner imgs"  v-for='item in footerMusicList' :key='item.id'>
+          <div >
             <img :src="item.pic_big" alt />
             <p>{{item.title}}</p>
           </div>
