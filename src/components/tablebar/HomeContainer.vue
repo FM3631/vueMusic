@@ -38,13 +38,13 @@
 
     <mt-swipe :auto="4000">
       <mt-swipe-item>
-        <img src="../../assets/1.png" alt />
+        <img src="../../assets/1.jpg" alt />
       </mt-swipe-item>
       <mt-swipe-item>
-        <img src="../../assets/2.png" alt />
+        <img src="../../assets/2.jpg" alt />
       </mt-swipe-item>
       <mt-swipe-item>
-        <img src="../../assets/3.png" alt />
+        <img src="../../assets/3.jpg" alt />
       </mt-swipe-item>
     </mt-swipe>
 
@@ -241,6 +241,7 @@ export default {
 /* 轮播图 */
 .mint-swipe {
   height: 200px;
+  padding: 15px;
 }
 .mint-swipe-items-wrap img {
   width: 100%;
