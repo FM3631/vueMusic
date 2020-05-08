@@ -23,7 +23,6 @@ export default new Router({
     {path:'/MyContainer',component:MyContainer},
     {path:'/SearchContainer',component:SearchContainer},
     {path:'/DayList',component:DayList},
-
     {path:'/Musicers',component:Musicers},
 
   ]
