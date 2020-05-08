@@ -1,29 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@fengchunwei 
-FM3631
-/
-vueMusic
-1
-11
- Code
- Issues 0
- Pull requests 1 Actions
- Projects 0
- Wiki
- Security 0
- Insights
-vueMusic/src/components/tablebar/HomeContainer.vue
-@FM3631 FM3631 分支测试
-79eb564 6 hours ago
-286 lines (279 sloc)  9.99 KB
-  
 <template>
   <div>
     <div class="mui-card">
@@ -35,29 +9,9 @@ vueMusic/src/components/tablebar/HomeContainer.vue
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <div class="imgs">
-            <img src="/static/images/1.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/2.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/3.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/4.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/5.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/6.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
+          <div class="imgs" v-for='item in picList' :key='item.album_id'>
+            <img :src="item.pic_big" alt />
+            <p>{{item.title}}</p>
           </div>
         </div>
       </div>
@@ -70,21 +24,12 @@ vueMusic/src/components/tablebar/HomeContainer.vue
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <div class="imgs">
-            <img src="/static/images/1.png" alt />
-            <p>歌名</p>
-            <p>作者</p>
+          <div class="imgs" v-for='item in newPicList' :key="item.id">
+            <img :src="item.pic_big" alt />
+            <p>{{item.album_title}}</p>
+            <p>{{item.artist_name}}</p>
           </div>
-          <div class="imgs">
-            <img src="/static/images/2.png" alt />
-            <p>歌名</p>
-            <p>作者</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/3.png" alt />
-            <p>歌名</p>
-            <p>作者</p>
-          </div>
+         
         </div>
       </div>
     </div>
@@ -93,13 +38,13 @@ vueMusic/src/components/tablebar/HomeContainer.vue
 
     <mt-swipe :auto="4000">
       <mt-swipe-item>
-        <img src="/static/images/3.png" alt />
+        <img src="../../assets/1.png" alt />
       </mt-swipe-item>
       <mt-swipe-item>
-        <img src="/static/images/2.png" alt />
+        <img src="../../assets/2.png" alt />
       </mt-swipe-item>
       <mt-swipe-item>
-        <img src="/static/images/1.png" alt />
+        <img src="../../assets/3.png" alt />
       </mt-swipe-item>
     </mt-swipe>
 
@@ -111,39 +56,21 @@ vueMusic/src/components/tablebar/HomeContainer.vue
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
           <mt-navbar class="page-part" v-model="selected">
-            <mt-tab-item id="1">选项一</mt-tab-item>
-            <mt-tab-item id="2">选项二</mt-tab-item>
-            <mt-tab-item id="3">选项三</mt-tab-item>
+            <mt-tab-item id="1">新歌榜</mt-tab-item>
+            <mt-tab-item id="2">热歌榜</mt-tab-item>
+            <mt-tab-item id="3">King榜</mt-tab-item>
           </mt-navbar>
 
           <!-- tabcontainer -->
           <mt-tab-container v-model="selected">
             <mt-tab-container-item id="1">
               <ul class="mui-table-view">
-                <li class="mui-table-view-cell mui-media">
+                <li class="mui-table-view-cell mui-media" v-for='item in musicNewList' :key='item.id'>
                   <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/1.png" />
+                    <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
-                      幸福
-                      <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                  <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/2.png" />
-                    <div class="mui-media-body">
-                      木屋
-                      <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                  <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/3.png" />
-                    <div class="mui-media-body">
-                      CBD
-                      <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+                      <span>{{item.title}}</span>
+                      <p class="mui-ellipsis">{{item.artist_name}}</p>
                     </div>
                   </a>
                 </li>
@@ -151,64 +78,30 @@ vueMusic/src/components/tablebar/HomeContainer.vue
             </mt-tab-container-item>
             <mt-tab-container-item id="2">
               <ul class="mui-table-view">
-                <li class="mui-table-view-cell mui-media">
+                <li class="mui-table-view-cell mui-media" v-for='item in musicHotList' :key='item.id'>
                   <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/3.png" />
+                    <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
-                      幸福
-                      <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                      <span>{{item.title}}</span>
+                      <p class="mui-ellipsis">{{item.artist_name}}</p>
                     </div>
                   </a>
                 </li>
-                <li class="mui-table-view-cell mui-media">
-                  <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/1.png" />
-                    <div class="mui-media-body">
-                      木屋
-                      <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                  <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/2.png" />
-                    <div class="mui-media-body">
-                      CBD
-                      <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-                    </div>
-                  </a>
-                </li>
+                
               </ul>
             </mt-tab-container-item>
             <mt-tab-container-item id="3">
               <ul class="mui-table-view">
-                <li class="mui-table-view-cell mui-media">
+                <li class="mui-table-view-cell mui-media" v-for='item in musicKingList' :key='item.id'>
                   <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/2.png" />
+                    <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
-                      幸福
-                      <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                      <span>{{item.title}}</span>
+                      <p class="mui-ellipsis">{{item.artist_name}}</p>
                     </div>
                   </a>
                 </li>
-                <li class="mui-table-view-cell mui-media">
-                  <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/3.png" />
-                    <div class="mui-media-body">
-                      木屋
-                      <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                  <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="/static/images/1.png" />
-                    <div class="mui-media-body">
-                      CBD
-                      <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-                    </div>
-                  </a>
-                </li>
+                
               </ul>
             </mt-tab-container-item>
           </mt-tab-container>
@@ -226,29 +119,9 @@ vueMusic/src/components/tablebar/HomeContainer.vue
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <div class="imgs">
-            <img src="/static/images/1.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/2.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/3.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/4.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/5.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
-          </div>
-          <div class="imgs">
-            <img src="/static/images/6.png" alt />
-            <p>这是一行字多出来的隐藏这是一行字多出来的隐藏</p>
+          <div class="imgs" v-for='item in footerMusicList' :key='item.id'>
+            <img :src="item.pic_big" alt />
+            <p>{{item.title}}</p>
           </div>
         </div>
       </div>
@@ -260,22 +133,85 @@ export default {
   name: "todayList",
   data() {
     return {
-      selected: "1"
+      selected: "1",
+      picList:[],
+      newPicList:[],
+      musicNewList:[],
+      musicHotList:[],
+      musicKingList:[],
+      footerMusicList:[]
     };
   },
 
   created() {
-    this.getMusicList()
+    this.getMusicList(),
+    this.getNewList(),
+    this.getMusicNewList(),
+    this.getMusicHotList(),
+    this.getMusicKingList(),
+    this.getFooterMusicList()
   },
   methods:{
+    //今日榜单列表
     getMusicList(){
-           const musicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=2'
+           const musicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=6'
            this.$axios.get(musicListUrl)
            .then(res=>{
-             console.log(res)
+            //  console.log(res)
+             this.picList = res.data.song_list
            })
            .catch()
-       }
+       },
+    //新歌速递列表
+    getNewList(){
+           const newMusicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=2&size=3'
+           this.$axios.get(newMusicListUrl)
+           .then(res=>{
+            //  console.log(res)
+             this.newPicList = res.data.song_list
+           })
+           .catch()
+       },
+    //音乐榜单--新歌榜
+    getMusicNewList(){
+          const musicNewListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=23&size=3'
+           this.$axios.get(musicNewListUrl)
+           .then(res=>{
+            //  console.log(res)
+             this.musicNewList = res.data.song_list
+           })
+           .catch()
+    },
+    //音乐榜单--热歌榜
+    getMusicHotList(){
+          const musicHotListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=24&size=3'
+           this.$axios.get(musicHotListUrl)
+           .then(res=>{
+            //  console.log(res)
+             this.musicHotList = res.data.song_list
+           })
+           .catch()
+    },
+    //音乐榜单--King榜
+    getMusicKingList(){
+          const musicKingListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=25&size=3'
+           this.$axios.get(musicKingListUrl)
+           .then(res=>{
+             console.log(res)
+             this.musicKingList = res.data.song_list
+           })
+           .catch()
+    },
+    //底部热门歌单
+    getFooterMusicList(){
+          const footerMusicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=21&size=6'
+           this.$axios.get(footerMusicListUrl)
+           .then(res=>{
+             console.log(res)
+             this.footerMusicList = res.data.song_list
+           })
+           .catch()
+    },
   }
 };
 </script>
@@ -311,15 +247,4 @@ export default {
   height: 100%;
 }
 </style>
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+

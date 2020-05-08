@@ -1,23 +1,34 @@
 <template>
     <div>
         <h4 style="margin:10px">今日榜单</h4>
-        <div class="musicBox">
-            <img src="/static/images/1.png" alt="">
-            <p>介绍信息介绍信息介绍信息</p>
+        <div class="musicBox" v-for='item in picList' :key='item.id'>
+            <img :src="item.pic_big" alt="">
+             <p>{{item.title}}</p>
         </div>
-        <div class="musicBox">
-            <img src="/static/images/1.png" alt="">
-            <p>介绍信息介绍信息介绍信息</p>
-        </div>
-        <div class="musicBox">
-            <img src="/static/images/1.png" alt="">
-            <p>介绍信息介绍信息介绍信息</p>
-        </div>
+        
     </div>
 </template>
 <script>
 export default {
-    
+    data(){
+        return {
+            picList:[]
+        }
+    },
+    created(){
+        this.getMusicList()
+    },
+    methods:{
+        getMusicList(){
+           const musicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&'
+           this.$axios.get(musicListUrl)
+           .then(res=>{
+             console.log(res)
+             this.picList = res.data.song_list
+           })
+           .catch()
+       }
+    }
 }
 </script>
 <style scoped>
