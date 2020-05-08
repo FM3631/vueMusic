@@ -9,10 +9,10 @@
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <div class="imgs" v-for='item in picList' :key='item.album_id'>
+          <router-link :to="'PlayMusic/'+item.song_id" class="imgs" v-for='item in picList' :key='item.album_id' :mess='item.song_id'>
             <img :src="item.pic_big" alt />
             <p>{{item.title}}</p>
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -24,11 +24,11 @@
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <div class="imgs" v-for='item in newPicList' :key="item.id">
+          <router-link to="PlayMusic" class="imgs" v-for='item in newPicList' :key="item.id">
             <img :src="item.pic_big" alt />
             <p>{{item.album_title}}</p>
             <p>{{item.artist_name}}</p>
-          </div>
+          </router-link>
          
         </div>
       </div>
@@ -65,7 +65,7 @@
           <mt-tab-container v-model="selected">
             <mt-tab-container-item id="1">
               <ul class="mui-table-view">
-                <li class="mui-table-view-cell mui-media" v-for='item in musicNewList' :key='item.id'>
+                <router-link to="PlayMusic" class="mui-table-view-cell mui-media" v-for='item in musicNewList' :key='item.id'>
                   <a href="javascript:;">
                     <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
@@ -73,12 +73,12 @@
                       <p class="mui-ellipsis">{{item.artist_name}}</p>
                     </div>
                   </a>
-                </li>
+                </router-link>
               </ul>
             </mt-tab-container-item>
             <mt-tab-container-item id="2">
               <ul class="mui-table-view">
-                <li class="mui-table-view-cell mui-media" v-for='item in musicHotList' :key='item.id'>
+                <router-link to="PlayMusic" class="mui-table-view-cell mui-media" v-for='item in musicHotList' :key='item.id'>
                   <a href="javascript:;">
                     <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
@@ -86,13 +86,13 @@
                       <p class="mui-ellipsis">{{item.artist_name}}</p>
                     </div>
                   </a>
-                </li>
+                </router-link>
                 
               </ul>
             </mt-tab-container-item>
             <mt-tab-container-item id="3">
               <ul class="mui-table-view">
-                <li class="mui-table-view-cell mui-media" v-for='item in musicKingList' :key='item.id'>
+                <router-link to="PlayMusic" class="mui-table-view-cell mui-media" v-for='item in musicKingList' :key='item.id'>
                   <a href="javascript:;">
                     <img class="mui-media-object mui-pull-left" :src="item.pic_big" />
                     <div class="mui-media-body">
@@ -100,7 +100,7 @@
                       <p class="mui-ellipsis">{{item.artist_name}}</p>
                     </div>
                   </a>
-                </li>
+                </router-link>
                 
               </ul>
             </mt-tab-container-item>
@@ -118,12 +118,12 @@
         <div style="float:right; font-size:12px;">更多</div>
       </div>
       <div class="mui-card-content">
-        <div class="mui-card-content-inner">
+        <router-link to="PlayMusic" class="mui-card-content-inner">
           <div class="imgs" v-for='item in footerMusicList' :key='item.id'>
             <img :src="item.pic_big" alt />
             <p>{{item.title}}</p>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -157,7 +157,7 @@ export default {
            const musicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=6'
            this.$axios.get(musicListUrl)
            .then(res=>{
-            //  console.log(res)
+             console.log(res)
              this.picList = res.data.song_list
            })
            .catch()
@@ -197,7 +197,7 @@ export default {
           const musicKingListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=25&size=3'
            this.$axios.get(musicKingListUrl)
            .then(res=>{
-             console.log(res)
+            //  console.log(res)
              this.musicKingList = res.data.song_list
            })
            .catch()
@@ -207,7 +207,7 @@ export default {
           const footerMusicListUrl = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=21&size=6'
            this.$axios.get(footerMusicListUrl)
            .then(res=>{
-             console.log(res)
+            //  console.log(res)
              this.footerMusicList = res.data.song_list
            })
            .catch()

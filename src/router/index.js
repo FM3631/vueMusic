@@ -10,6 +10,7 @@ import MyContainer from '../components/tablebar/MyContainer.vue'
 import SearchContainer from '../components/tablebar/SearchContainer.vue'
 import DayList from '../components/more/DayList.vue'
 import Musicers from '../components/musicer/Musicers.vue'
+import PlayMusic from '../components/tablebar/PlayMusic.vue'
 
 
 
@@ -24,6 +25,7 @@ export default new Router({
     {path:'/SearchContainer',component:SearchContainer},
     {path:'/DayList',component:DayList},
     {path:'/Musicers',component:Musicers},
+    {path:'/PlayMusic/:song_id',component:PlayMusic}
 
   ]
 })
