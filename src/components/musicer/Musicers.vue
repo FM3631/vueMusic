@@ -6,7 +6,7 @@
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media">
         <div class="mui-media-body">
-          <p class="mui-ellipsis">王菲</p>
+          <p class="mui-ellipsis">薛之谦</p>
         </div>
       </li>
   
