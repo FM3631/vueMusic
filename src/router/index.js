@@ -8,7 +8,11 @@ import ListContainer from '../components/tablebar/ListContainer.vue'
 import MyContainer from '../components/tablebar/MyContainer.vue'
 import SearchContainer from '../components/tablebar/SearchContainer.vue'
 import DayList from '../components/more/DayList.vue'
-import NewsongList from '../components/rankinglist/NewsongList.vue'
+
+
+import Musicers from '../components/musicer/Musicers.vue'
+
+
 
 export default new Router({
   routes: [
@@ -19,7 +23,8 @@ export default new Router({
     {path:'/MyContainer',component:MyContainer},
     {path:'/SearchContainer',component:SearchContainer},
     {path:'/DayList',component:DayList},
-    {path:'/ListContainer/NewsongList',component:NewsongList},
+
+    {path:'/Musicers',component:Musicers},
 
   ]
 })
