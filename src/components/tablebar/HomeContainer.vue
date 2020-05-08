@@ -262,18 +262,9 @@ export default {
       selected: "1"
     };
   },
-  created(){
-    this.getDayLisy()
-  },
+ 
   methods:{
-    //获取今日榜单列
-    getDayLisy(){
-      this.axios.get('http://yapi.shangyuninfo.com/mock/36/web02/category')
-      .then(result=>{
-        console.log(result)
-      })
-      .then()
-    }
+    
   }
 };
 </script>

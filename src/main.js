@@ -7,7 +7,9 @@ import router from './router'
 //导入axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+Vue.prototype.$axios = axios
 Vue.use(VueAxios, axios)
+Vue.prototype.HOST = '/api'
 
 //导入mint-ui
 import '../node_modules/mint-ui/lib/style.css'
