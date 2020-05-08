@@ -4,10 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './all.css'
+
 //导入axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+Vue.prototype.$axios = axios
 Vue.use(VueAxios, axios)
+Vue.prototype.HOST = '/api'
+
 
 //导入mint-ui
 import '../node_modules/mint-ui/lib/style.css'

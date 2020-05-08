@@ -9,6 +9,13 @@ import MyContainer from '../components/tablebar/MyContainer.vue'
 import SearchContainer from '../components/tablebar/SearchContainer.vue'
 import DayList from '../components/more/DayList.vue'
 import NewsongList from '../components/rankinglist/NewsongList.vue'
+import HotsongList from '../components/rankinglist/HotsongList.vue'
+import RanksongList from '../components/rankinglist/RanksongList.vue'
+import EasongList from '../components/rankinglist/EasongList.vue'
+import ClassicsongList from '../components/rankinglist/ClassicsongList.vue'
+import NetsongList from '../components/rankinglist/NetsongList.vue'
+import FilmssongList from '../components/rankinglist/FilmssongList.vue'
+import LovesongList from '../components/rankinglist/LovesongList.vue'
 
 export default new Router({
   routes: [
@@ -20,6 +27,12 @@ export default new Router({
     {path:'/SearchContainer',component:SearchContainer},
     {path:'/DayList',component:DayList},
     {path:'/ListContainer/NewsongList',component:NewsongList},
-
+    {path:'/ListContainer/HotsongList',component:HotsongList},
+    {path:'/ListContainer/RanksongList',component:RanksongList},
+    {path:'/ListContainer/EasongList',component:EasongList},
+    {path:'/ListContainer/ClassicsongList',component:ClassicsongList},
+    {path:'/ListContainer/NetsongList',component:NetsongList},
+    {path:'/ListContainer/FilmssongList',component:FilmssongList},
+    {path:'/ListContainer/LovesongList',component:LovesongList},
   ]
 })
