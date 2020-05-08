@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="musicList">
-      <router-link to="/ListContainer/NewsongList">
+      <router-link to="/NewsongList">
           <img src="../../assets/logo.png" alt />
       </router-link>
       <div class="list">
