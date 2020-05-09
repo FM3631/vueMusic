@@ -8,6 +8,9 @@ import ListContainer from '../components/tablebar/ListContainer.vue'
 import MyContainer from '../components/tablebar/MyContainer.vue'
 import SearchContainer from '../components/tablebar/SearchContainer.vue'
 import DayList from '../components/more/DayList.vue'
+import NewList from '../components/more/NewList.vue'
+import BillList from '../components/more/BillList.vue'
+import HotMusicList from '../components/more/HotMusicList.vue'
 
 import Musicers from '../components/musicer/Musicers.vue'
 import PlayMusic from '../components/tablebar/PlayMusic.vue'
@@ -34,7 +37,10 @@ export default new Router({
     {path:'/MyContainer',component:MyContainer},
     {path:'/SearchContainer',component:SearchContainer},
     {path:'/DayList',component:DayList},
-    {path:'/Musicers',component:Musicers},
+    {path:'/NewList',component:NewList},
+    {path:'/BillList',component:BillList},
+    {path:'/HotMusicList',component:HotMusicList},
+    {path:'/Musicers/:ting_uid',component:Musicers},
     {path:'/PlayMusic/:song_id',component:PlayMusic},
 
     {path:'/ListContainer/NewsongList',component:NewsongList},

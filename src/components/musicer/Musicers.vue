@@ -9,9 +9,9 @@
     </div>
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media" v-for="item in lister" :key="item.id">
-        <div class="mui-media-body">
+        <router-link :to="'/PlayMusic/'+item.song_id" class="mui-media-body">
           <p class="mui-ellipsis">{{item.title}}</p>
-        </div>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -30,9 +30,10 @@ export default {
   },
   methods: {
     getsingerList() {
+      console.log(this.$route.params.ting_uid)
       const singerList =
         this.HOST +
-        "v1/restserver/ting?method=baidu.ting.artist.getSongList&tinguid=2517";
+        "v1/restserver/ting?method=baidu.ting.artist.getSongList&tinguid="+this.$route.params.ting_uid;
       this.$axios
         .get(singerList)
         .then(result => {
@@ -44,7 +45,7 @@ export default {
     getimageList() {
       const imageList =
         this.HOST +
-        "v1/restserver/ting?method=baidu.ting.artist.getSongList&tinguid=2517&limits=1";
+        "v1/restserver/ting?method=baidu.ting.artist.getSongList&limits=1&tinguid="+this.$route.params.ting_uid;
       this.$axios
         .get(imageList)
         .then(result => {

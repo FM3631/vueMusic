@@ -20,7 +20,9 @@
     <div class="mui-card">
       <div class="mui-card-header">
         <div style="float:left">新歌速递</div>
-        <div style="float:right; font-size:12px;">更多</div>
+        <div style="float:right; font-size:12px;">
+          <router-link to="/NewList">更多</router-link>
+        </div>
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -51,7 +53,9 @@
     <div class="mui-card">
       <div class="mui-card-header">
         <div style="float:left">音乐榜单</div>
-        <div style="float:right; font-size:12px;">更多</div>
+        <div style="float:right; font-size:12px;">
+          <router-link to="/BillList">更多</router-link>
+        </div>
       </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -115,7 +119,9 @@
     <div class="mui-card">
       <div class="mui-card-header">
         <div style="float:left">热门歌单</div>
-        <div style="float:right; font-size:12px;">更多</div>
+        <div style="float:right; font-size:12px;">
+          <router-link to="/HotMusicList">更多</router-link>
+        </div>
       </div>
       <div class="mui-card-content">
         <router-link :to="'PlayMusic/'+item.song_id" class="mui-card-content-inner imgs"  v-for='item in footerMusicList' :key='item.id'>
