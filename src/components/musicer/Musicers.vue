@@ -69,8 +69,8 @@ export default {
 }
 .outer {
   text-align: center;
-  margin-left: 132px;
-  margin-top: 45px;
+  margin-left: 43%px;
+  margin-top: 12%px;
   position: absolute;
 }
 .img1 {
