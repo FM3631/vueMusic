@@ -37,13 +37,13 @@ export default new Router({
     {path:'/Musicers',component:Musicers},
     {path:'/PlayMusic/:song_id',component:PlayMusic},
 
-    {path:'/ListContainer/NewsongList',component:NewsongList},
-    {path:'/ListContainer/HotsongList',component:HotsongList},
-    {path:'/ListContainer/RanksongList',component:RanksongList},
-    {path:'/ListContainer/EasongList',component:EasongList},
-    {path:'/ListContainer/ClassicsongList',component:ClassicsongList},
-    {path:'/ListContainer/NetsongList',component:NetsongList},
-    {path:'/ListContainer/FilmssongList',component:FilmssongList},
-    {path:'/ListContainer/LovesongList',component:LovesongList},
+    {path:'/NewsongList/',component:NewsongList},
+    {path:'/HotsongList',component:HotsongList},
+    {path:'/RanksongList',component:RanksongList},
+    {path:'/EasongList',component:EasongList},
+    {path:'/ClassicsongList',component:ClassicsongList},
+    {path:'/NetsongList',component:NetsongList},
+    {path:'/FilmssongList',component:FilmssongList},
+    {path:'/LovesongList',component:LovesongList},
   ]
 })
