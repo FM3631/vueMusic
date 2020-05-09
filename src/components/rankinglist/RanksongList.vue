@@ -6,7 +6,7 @@
     <div class="center" v-for="item in songList" :key="item.id">
       <ul>
         <li>
-          <p>{{item.title}}</p>
+          <p> <router-link :to="'PlayMusic/'+item.song_id"><span>{{item.title}}</span></router-link></p>
           <p>{{item.author}}</p>
         </li>
       </ul>
@@ -39,6 +39,9 @@ this.getList();
 };
 </script>
 <style  scoped>
+span {
+  color: #191919;
+}
 ul li{
     margin-top: 10px;
     padding-bottom: 5px;
