@@ -13,13 +13,13 @@ import Musicers from '../components/musicer/Musicers.vue'
 
 export default new Router({
   routes: [
-    {path:'/',redirect:'/HomeContainer'},
-    {path:'/HomeContainer',component:HomeContainer},
-    {path:'/SingerContainer',component:SingerContainer},
-    {path:'/ListContainer',component:ListContainer},
-    {path:'/MyContainer',component:MyContainer},
-    {path:'/SearchContainer',component:SearchContainer},
-    {path:'/DayList',component:DayList},
-    {path:'/Musicers',component:Musicers},
+    { path: '/', redirect: '/HomeContainer' },
+    { path: '/HomeContainer', component: HomeContainer },
+    { path: '/SingerContainer', component: SingerContainer },
+    { path: '/ListContainer', component: ListContainer },
+    { path: '/MyContainer', component: MyContainer },
+    { path: '/SearchContainer', component: SearchContainer },
+    { path: '/DayList', component: DayList },
+    { path: '/Musicers/:ting_uid', component: Musicers },
   ]
 })

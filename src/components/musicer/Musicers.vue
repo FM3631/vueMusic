@@ -32,7 +32,7 @@ export default {
     getsingerList() {
       const singerList =
         this.HOST +
-        "v1/restserver/ting?method=baidu.ting.artist.getSongList&tinguid=2517";
+        "v1/restserver/ting?method=baidu.ting.artist.getSongList&tinguid="+this.$route.params.ting_uid;
       this.$axios
         .get(singerList)
         .then(result => {
@@ -44,7 +44,7 @@ export default {
     getimageList() {
       const imageList =
         this.HOST +
-        "v1/restserver/ting?method=baidu.ting.artist.getSongList&tinguid=2517&limits=1";
+        "v1/restserver/ting?method=baidu.ting.artist.getSongList&limits=1&tinguid="+this.$route.params.ting_uid;
       this.$axios
         .get(imageList)
         .then(result => {
