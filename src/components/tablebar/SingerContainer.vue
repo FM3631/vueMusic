@@ -1,25 +1,54 @@
 <template>
   <div>
     <ul class="mui-table-view">
-      <li class="mui-table-view-cell mui-media">
+      <li class="mui-table-view-cell mui-media" v-for="item in singerList" :key="item.id">
         <router-link href="javascript:;" to="Musicers">
-          <img class="mui-media-object mui-pull-left" src="/static/images/1.png" />
+          <img class="mui-media-object mui-pull-left" :src="item.avatar_s500" />
           <div class="mui-media-body">
-            <p class="mui-ellipsis">薛之谦</p>
+            <p class="mui-ellipsis">{{item.name}}</p>
           </div>
         </router-link>
       </li>
     </ul>
+
   </div>
-</template>
+</template> 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      singeridList: ["2517"  ,"7994","1091","45561","2507","245815","1077","1204","1117","82366"],
+      singerList:[]
+    };
+  },
+  created() {
+    this.getmusicerList();
+  },
+  methods: {
+    getmusicerList() {
+      for(let item of this.singeridList){
+        const musicerList =
+        this.HOST +
+        "v1/restserver/ting?method=baidu.ting.artist.getInfo&tinguid="+item;
+      this.$axios
+        .get(musicerList)
+        .then(result => {
+          const infoObj = {}
+          infoObj.name = result.data.name;
+          infoObj.avatar_s500 = result.data.avatar_s500;
+          this.singerList.push(infoObj)
+        })
+        .catch();
+      }
+    }
+  }
+};
 </script>
 <style scoped>
+li {
+  line-height: 42px;
+}
 .mui-table-view img {
   border-radius: 50%;
-}
-.mui-table-view a {
-  line-height: 41px;
 }
 </style>
