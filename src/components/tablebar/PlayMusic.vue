@@ -60,9 +60,10 @@ export default {
   
   methods: {
     getMusic() {
+      console.log(this.$route.params.song_id)
       const musicUrl =
         this.HOST +
-        "/v1/restserver/ting?method=baidu.ting.song.play&songid=675012544";
+        "/v1/restserver/ting?method=baidu.ting.song.play&songid="+this.$route.params.song_id;
       this.$axios
         .get(musicUrl)
         .then(result => {
