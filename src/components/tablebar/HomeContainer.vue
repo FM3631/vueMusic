@@ -143,6 +143,7 @@ export default {
     };
   },
 
+
   created() {
     this.getMusicList(),
     this.getNewList(),

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="topBg">
-      <img src="http://hiphotos.qianqian.com/ting/pic/item/e850352ac65c1038cb0f3cb0b0119313b07e894b.jpg" alt />
+      <img src="http://hiphotos.qianqian.com/ting/pic/item/0bd162d9f2d3572cd909f4da8813632763d0c3c9.jpg" alt />
     </div>
     <div class="center" v-for="item in songList" :key="item.id">
       <ul>
@@ -25,7 +25,7 @@ this.getList();
 },
   methods:{
     getList(){
-      let test = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1';
+      let test = this.HOST+'/v1/restserver/ting?method=baidu.ting.billboard.billList&type=22';
       this.$axios.get(test)
       .then(res=>{
         this.songList = res.data.song_list

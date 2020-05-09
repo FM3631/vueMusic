@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './all.css'
+
 //导入axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
