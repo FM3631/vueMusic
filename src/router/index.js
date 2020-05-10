@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
+
+
 import HomeContainer from '../components/tablebar/HomeContainer.vue'
 import SingerContainer from '../components/tablebar/SingerContainer.vue'
 import ListContainer from '../components/tablebar/ListContainer.vue'

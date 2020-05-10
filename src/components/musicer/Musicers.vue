@@ -17,7 +17,9 @@
   </div>
 </template>
 <script>
+
 export default {
+  
   data() {
     return {
       lister: [],
@@ -69,8 +71,8 @@ export default {
 }
 .outer {
   text-align: center;
-  margin-left: 43%px;
-  margin-top: 12%px;
+  margin-left: 43%;
+  margin-top: 12%;
   position: absolute;
 }
 .img1 {
