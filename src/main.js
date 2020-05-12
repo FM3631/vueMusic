@@ -27,6 +27,12 @@ import mui from './lib/mui/js/mui.js'
 Vue.prototype.mui = mui
 
 
+//引入vant
+
+import { Search } from 'vant';
+
+Vue.use(Search);
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

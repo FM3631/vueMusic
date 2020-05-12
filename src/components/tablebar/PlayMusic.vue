@@ -24,9 +24,10 @@
 
 
     <div style="margin-top:110px">
-      <div style="float:left; color:red">
-        <i class="mui-icon-extra mui-icon-extra-heart-filled"></i>
+      <div style="float:left; " @click='toggleColor'>
+        <i class="mui-icon-extra mui-icon-extra-heart-filled" ref='changeColor'></i>
       </div>
+
       <div style="float:right">
         <i class="mui-icon mui-icon-download"></i>
       </div>
@@ -48,6 +49,7 @@ import $ from "jquery";
 export default {
   data() {
     return {
+      flag:true,
       playData: {
         bitrate: {
           show_link: ""
@@ -79,7 +81,7 @@ export default {
   methods: {
     //获取歌曲接口
     getMusic() {
-      // console.log(this.$route.params.song_id)
+      console.log(this.$route.params.song_id)
       const musicUrl =
         this.HOST +
         "/v1/restserver/ting?method=baidu.ting.song.play&songid=" +
@@ -107,10 +109,21 @@ export default {
         .then(result => {
           // console.log(result);
           this.lyricList.lrcContent = result.data.lrcContent;
-          console.log(this.lyricList.lrcContent);
+          // console.log(this.lyricList.lrcContent);
         })
         .catch();
     },
+
+    //切换红心颜色
+    toggleColor(){
+      if(this.flag){
+        this.$refs.changeColor.style.color='red'
+				this.flag =  false;
+      }else{
+        this.$refs.changeColor.style.color='#ccc'
+				this.flag = true;
+      }
+    }
   }
 };
 </script>
