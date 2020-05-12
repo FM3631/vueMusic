@@ -34,7 +34,7 @@ export default {
   },
     methods:{
         getMusicNewList() {
-            console.log(this.type)
+            // console.log(this.type)
       const musicNewListUrl =
         this.HOST +
         `/v1/restserver/ting?method=baidu.ting.billboard.billList&type=${this.type}&size=${this.size}`;

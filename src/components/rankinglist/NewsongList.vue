@@ -2,7 +2,7 @@
   <div>
     <div class="topBg">
       <img
-        src="http://hiphotos.qianqian.com/ting/pic/item/e850352ac65c1038cb0f3cb0b0119313b07e894b.jpg"
+        :src="billboard.pic_s192"
         alt
       />
     </div>
@@ -23,7 +23,8 @@
 export default {
   data() {
     return {
-      songList: []
+      songList: [],
+      billboard:{}
     };
   },
   created() {
@@ -31,15 +32,16 @@ export default {
   },
   methods: {
     getList() {
+      console.log(this.$route.params.type)
       let test =
         this.HOST +
-        "/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1";
+        "/v1/restserver/ting?method=baidu.ting.billboard.billList&type="+this.$route.params.type;
       this.$axios
         .get(test)
         .then(res => {
           this.songList = res.data.song_list;
-
-          // console.log(res)
+          this.billboard = res.data.billboard
+          console.log(res)
         })
         .catch();
     }

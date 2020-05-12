@@ -1,6 +1,6 @@
 <template>
   <div>
-        <h4 style="margin:10px">今日榜单</h4>
+        <h4 style="margin:10px">{{this.$route.params.title}}</h4>
         <router-link :to="'PlayMusic/'+item.song_id" class="musicBox" v-for='item in picList' :key='item.id'>
             <img :src="item.pic_big" alt="">
              <p>{{item.title}}</p>
@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      picList: []
+      picList: [],
     };
   },
   created() {
@@ -19,9 +19,11 @@ export default {
   },
   methods: {
     getMusicList() {
+      console.log(this.$route.params.type)
+      console.log(this.$route.params.title)
       const musicListUrl =
         this.HOST +
-        "/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&";
+        "/v1/restserver/ting?method=baidu.ting.billboard.billList&type="+this.$route.params.type;
       this.$axios
         .get(musicListUrl)
         .then(res => {
