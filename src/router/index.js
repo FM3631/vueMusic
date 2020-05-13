@@ -22,12 +22,11 @@ export default new Router({
     {path:'/HomeContainer',component:HomeContainer},
     {path:'/SingerContainer',component:SingerContainer},
     {path:'/ListContainer',component:ListContainer},
-    {path:'/NewsongList',component:NewsongList},
     {path:'/MyContainer',component:MyContainer},
     {path:'/SearchContainer',component:SearchContainer},
     {path:'/DayList/:type',component:DayList,name:'toDayList'},
     {path:'/Musicers/:ting_uid',component:Musicers},
     {path:'/PlayMusic/:song_id',component:PlayMusic},
-    {path:'/NewsongList/:type/:title',component:NewsongList,},
+    {path:'/NewsongList/:type',component:NewsongList,},
   ]
 })

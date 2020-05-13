@@ -5,7 +5,15 @@
 </template>
 <script>
 export default {
-    
+    data(){
+
+    },
+    methods:{
+        getSongInfo(){
+            
+        }
+    },
+
 }
 </script>
 <style scoped>

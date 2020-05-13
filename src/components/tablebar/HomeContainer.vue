@@ -21,7 +21,7 @@
     </mt-swipe>
 
     <!-- 音乐榜单 -->
-    <TabList title="音乐榜单"></TabList>
+    <TabList title="音乐榜单" type="23"></TabList>
 
     <!-- 热门歌单 -->
     <DayList title="热门歌单" type="21" size="6"></DayList>

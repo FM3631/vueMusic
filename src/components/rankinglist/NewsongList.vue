@@ -11,7 +11,7 @@
         <li>
           <p>
             <!-- 渲染的歌名 -->
-            <router-link :to="'PlayMusic/'+item.song_id"><span>{{item.title}}</span></router-link>
+            <router-link :to="'/PlayMusic/'+item.song_id"><span>{{item.title}}</span></router-link>
           </p>
           <p>{{item.author}}</p>
         </li>

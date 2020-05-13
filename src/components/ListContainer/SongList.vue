@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="musicList">
-      <!-- 新歌 -->
       <router-link :to="'/NewsongList/'+this.type">
         <img
           :src="imgsList.pic_s192"

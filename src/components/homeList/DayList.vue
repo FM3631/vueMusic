@@ -25,41 +25,30 @@
   </div>
 </template>
 <script>
+import { getMusicBillList } from "../../../api/musicList.js";
 export default {
-    components:{
-      
-    },
-    data(){
-        return {
-            picList:[]
-        }
-    },
-    props:{
-        type:String,
-        size:String,
-        title:{
-            type:String,
-            default:'今日榜单'
-        }
-    },
-    created(){
-        this.getMusicList()
-    },
-    methods:{
-        getMusicList(){
-        
-        // console.log(this.size)
-          const musicListUrl = this.HOST+`/v1/restserver/ting?method=baidu.ting.billboard.billList&type=${this.type}&size=${this.size}`
-           this.$axios.get(musicListUrl)
-           .then(res=>{
-            //    console.log(this.type)
-            //  console.log(res)
-             this.picList = res.data.song_list
-           })
-           .catch()
-       },
+  components: {},
+  data() {
+    return {
+      picList: []
+    };
+  },
+  props: {
+    type: String,
+    size: String,
+    title: {
+      type: String,
+      default: "今日榜单"
     }
-    
+  },
+  created() {
+    getMusicBillList(this.type, this.size)
+        .then(res => {
+          this.picList = res.song_list;
+        })
+        .catch();
+  },
+  methods: {}
 };
 </script>
 <style scoped>

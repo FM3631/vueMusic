@@ -4,7 +4,8 @@
       <div class="mui-card-header">
         <div style="float:left">{{this.title}}</div>
         <div style="float:right; font-size:12px;">
-          <router-link to="/BillList">更多</router-link>
+          <!-- <router-link to="/BillList">更多</router-link> -->
+          <router-link :to="{name:'toDayList',params:{type:this.type,title:this.title}}">更多</router-link>
         </div>
       </div>
       <div class="mui-card-content">
@@ -47,7 +48,8 @@ export default {
     };
   },
   props:{
-    title:String
+    title:String,
+    type:String
   },
   methods: {}
 };
