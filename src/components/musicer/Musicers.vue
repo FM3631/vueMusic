@@ -9,15 +9,17 @@
     </div>
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media" v-for="item in lister" :key="item.id">
-        <div class="mui-media-body">
+        <router-link :to="'/PlayMusic/'+item.song_id" class="mui-media-body">
           <p class="mui-ellipsis">{{item.title}}</p>
-        </div>
+        </router-link>
       </li>
     </ul>
   </div>
 </template>
 <script>
+
 export default {
+  
   data() {
     return {
       lister: [],
@@ -30,6 +32,7 @@ export default {
   },
   methods: {
     getsingerList() {
+      console.log(this.$route.params.ting_uid)
       const singerList =
         this.HOST +
         "v1/restserver/ting?method=baidu.ting.artist.getSongList&tinguid="+this.$route.params.ting_uid;
@@ -68,8 +71,8 @@ export default {
 }
 .outer {
   text-align: center;
-  margin-left: 132px;
-  margin-top: 45px;
+  margin-left: 43%;
+  margin-top: 12%;
   position: absolute;
 }
 .img1 {
