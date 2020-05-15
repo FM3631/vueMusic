@@ -18,7 +18,6 @@ Vue.prototype.$axios = axios
 Vue.use(VueAxios, axios)
 Vue.use(VueAxios, http)
 Vue.prototype.HOST = '/api'
-// Vue.prototype.HOST1 = '/api1'
 
 
 //导入mint-ui

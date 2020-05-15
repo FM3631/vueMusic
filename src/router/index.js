@@ -18,15 +18,24 @@ import NewsongList from '../components/rankinglist/NewsongList.vue'
 
 export default new Router({
   routes: [
-    {path:'/',redirect:'/HomeContainer'},
-    {path:'/HomeContainer',component:HomeContainer},
-    {path:'/SingerContainer',component:SingerContainer},
-    {path:'/ListContainer',component:ListContainer},
-    {path:'/MyContainer',component:MyContainer},
-    {path:'/SearchContainer',component:SearchContainer},
-    {path:'/DayList/:type',component:DayList,name:'toDayList'},
-    {path:'/Musicers/:ting_uid',component:Musicers},
-    {path:'/PlayMusic/:song_id',component:PlayMusic},
-    {path:'/NewsongList/:type',component:NewsongList,},
+    { path: '/', redirect: '/HomeContainer' },
+    { path: '/HomeContainer', component: HomeContainer, 
+    meta:{
+      hometitle:'音乐'
+    }
+  },
+    { path: '/SingerContainer', component: SingerContainer },
+    { path: '/ListContainer', component: ListContainer },
+    { path: '/MyContainer', component: MyContainer },
+    { path: '/SearchContainer', component: SearchContainer },
+    { path: '/DayList/:type', component: DayList, name: 'toDayList',
+    meta:{
+      sitetitle:'更多列表'
+    }
+    
+  },
+    { path: '/Musicers/:ting_uid', component: Musicers },
+    { path: '/PlayMusic/:song_id', component: PlayMusic },
+    { path: '/NewsongList/:type', component: NewsongList, },
   ]
 })

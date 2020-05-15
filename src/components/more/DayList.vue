@@ -1,22 +1,29 @@
 <template>
   <div>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-    <van-list v-model="loading" :finished="finished" :offset="offset" finished-text="没有更多了" @load="onLoad">
-    <h4 style="margin:10px">{{this.$route.params.title}}</h4>
-    <router-link
-      :to="'/PlayMusic/'+item.song_id"
-      class="musicBox"
-      v-for="item in picList"
-      :key="item.id"
-    >
-      <img :src="item.pic_big" alt />
-      <p>{{item.title}}</p>
-    </router-link>
-    </van-list>
+    <van-pull-refresh v-model="refreshing" >
+      <van-list
+        v-model="loading"
+        :finished="finished"
+        :offset="offset"
+        finished-text="没有更多了"
+        @load="onLoad"
+      >
+        <h4 style="margin:10px">{{this.$route.params.title}}</h4>
+        <router-link
+          :to="'/PlayMusic/'+item.song_id"
+          class="musicBox"
+          v-for="item in picList"
+          :key="item.id"
+        >
+          <img :src="item.pic_big" alt />
+          <p>{{item.title}}</p>
+        </router-link>
+      </van-list>
     </van-pull-refresh>
   </div>
 </template>
 <script>
+import { getMusicBillList } from "../../../api/musicList.js";
 export default {
   data() {
     return {
@@ -24,59 +31,94 @@ export default {
       loading: false,
       finished: false,
       refreshing: false,
-      offset: 100
+      offset: 0
     };
   },
-  created() {
-    // this.getMusicList();
-  },
+  created() {},
   methods: {
-    /* getMusicList() {
-      
-    }, */
-
     onLoad() {
-      console.log(this.$route.params.type);
-      console.log(this.$route.params.title);
-      const musicListUrl =
-        this.HOST +
-        "/v1/restserver/ting?method=baidu.ting.billboard.billList&type=" +
-        this.$route.params.type;
-      this.$axios
-        .get(musicListUrl)
-        .then(res => {
-          console.log(res);
-          this.picList = res.data.song_list;
-        })
-        .catch();
-
+      // console.log(this.$route.params.type);
+      // console.log(this.$route.params.title);
       setTimeout(() => {
-        if (this.refreshing) {
-          this.picList = [];
-          this.refreshing = false;
-        }
+        getMusicBillList(this.$route.params.type,10,this.offset)
+          .then(res => {
+            console.log(res);
+            this.picList = this.picList.concat(res.song_list);
+            this.loading = false;
+            this.offset += 10;
+            // debugger
+          })
+          .catch();
+      },500);
 
-        for (let i = 0; i < 10; i++) {
-          this.picList.push(this.picList.length + 1);
-        }
-        this.loading = false;
+      //   setTimeout(() => {
+      //     if (this.refreshing) {
+      //       this.picList = [];
+      //       this.refreshing = false;
+      //     }
 
-        if (this.picList.length >= 40) {
-          this.finished = true;
-        }
-      }, 1000);
-    },
-    onRefresh() {
-      // 清空列表数据
-      this.finished = false;
+      //     for (let i = 0; i < 10; i++) {
+      //       this.picList.push(this.picList.length + 1);
+      //     }
+      //     this.loading = false;
 
-      // 重新加载数据
-      // 将 loading 设置为 true，表示处于加载状态
-      this.loading = true;
-      this.onLoad();
+      //     if (this.picList.length >= 40) {
+      //       this.finished = true;
+      //     }
+      //   }, 1000);
+      // },
+      // onRefresh() {
+      //   // 清空列表数据
+      //   this.finished = false;
+
+      //   // 重新加载数据
+      //   // 将 loading 设置为 true，表示处于加载状态
+      //   this.loading = true;
+      //   this.onLoad();
     }
   }
 };
+
+// created() {
+// console.log(this.$route.params.title);
+// console.log(this.$route.params.type);
+
+// // this.$$router.push("/HomeContainer")
+// // this.$router.back()
+// // debugger
+//   document.title = this.$route.meta.sitetitle;
+// },
+// methods: {
+// //路由返回
+// back(){
+//   // this.$router.back();
+//   // this.$router.go(-2)
+// },
+// home(){
+//   //push replace 返回首页
+//   // this.$router.push("/HomeContainer")
+//   // this.$router.replace("/HomeContainer")
+// }
+
+// onLoad() {
+// 异步更新数据
+// setTimeout 仅做示例，真实场景中一般为 ajax 请求
+//       setTimeout(() => {
+//         for (let i = 0; i < 10; i++) {
+//           this.list.push(this.list.length + 1);
+//         }
+
+//         // 加载状态结束
+//         this.loading = false;
+
+//         // 数据全部加载完成
+//         if (this.list.length >= 40) {
+//           this.finished = true;
+//         }
+//       }, 1000);
+//     }
+//   }
+// };
 </script>
 <style scoped>
 .musicBox {
@@ -85,4 +127,27 @@ export default {
   text-align: center;
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

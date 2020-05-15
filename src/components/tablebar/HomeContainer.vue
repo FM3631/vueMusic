@@ -39,6 +39,9 @@ export default {
   data() {
     return {};
   },
+  created(){
+     document.title = this.$route.meta.hometitle
+  },
 
   methods: {}
 };

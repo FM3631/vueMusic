@@ -4,7 +4,7 @@
       <van-search
         v-model="value"
         show-action
-        placeholder="请输入歌名、歌手、专辑"
+        placeholder="搜索"
         @search="onSearch"
         @cancel="onCancel"
       />
@@ -14,17 +14,19 @@
         <li v-for="item in resultList" :key="item.id">
           <router-link :to="'/PlayMusic/'+item.songid">
             <span style="font-size:14px">歌名：{{item.songname}}</span>
-            <span style="font-size:12px">作者：{{item.artistname}}</span>
+            <span style="font-size:12px;width=100px;">作者：{{item.artistname}}</span>
           </router-link>
         </li>
       </ul>
 
       <div>
-        <p>搜索记录</p> 
-        <span v-for="item in historyList" :key="item.id" style="display: inline-block;width:30px">{{item.person}}</span>
-        
+        <p>搜索记录</p>
+        <span
+          v-for="item in historyList"
+          :key="item.id"
+          style="display: inline-block;"
+        >{{item.person}}</span>
       </div>
-      <div @click="clear">清空历史记录</div>
     </div>
   </div>
 </template>
@@ -39,15 +41,10 @@ export default {
     };
   },
   created() {
-    this.onSearch()
-    // localStorage.clear()
+    this.onSearch();
+    localStorage.clear();
   },
   methods: {
-    clear(){
-      localStorage.clear()
-      this.historyList = []
-      console.log(111)
-    },
     onSearch(val) {
       const searchListUrl =
         this.HOST +
@@ -60,30 +57,24 @@ export default {
           this.resultList = result.data.song;
         })
         .catch();
-
       //将历史记录存到localStorage里
       // localStorage.getItem(this.value)
-
       var con = { id: Date.now(), person: this.value };
-      // console.log(con);
       var list = JSON.parse(localStorage.getItem("history") || "[]");
-      // console.log(list);
       list.push(con);
       localStorage.setItem("history", JSON.stringify(list));
       this.historyList = list;
-      console.log(this.historyList)
-      // Toast(val);
+      console.log(this.historyList);
+
     },
     onCancel() {
       Toast("取消");
     }
-
-    //搜索功能实现
   }
 };
 </script>
 <style scoped>
-.a{
+.a {
   display: inline-block;
 }
 </style>

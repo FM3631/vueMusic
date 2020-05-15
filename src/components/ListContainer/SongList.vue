@@ -49,6 +49,7 @@ export default {
 </script>
 <style scoped>
     .musicList {
+    padding: 10px;
   font-size: 16px;
   color: #999;
   margin-top: 15px;

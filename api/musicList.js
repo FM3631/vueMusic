@@ -6,7 +6,7 @@ import http from "./http.js";
 // offset：偏移量
 // 输出：
 //     请求到的数据。
-function getMusicBillList(type = 1, size = 6, offset = 0) {
+function getMusicBillList(type = 1, size = 10, offset = 0) {
     const url = `/api/v1/restserver/ting?method=baidu.ting.billboard.billList&type=${type}&size=${size}&offset=${offset}`;
     // http.get(url).then(res => {
     //     // 想办法把res的数据返回出去那
