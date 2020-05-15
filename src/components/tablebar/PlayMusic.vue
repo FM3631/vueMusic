@@ -19,11 +19,11 @@
 
     <!-- 歌词 -->
     <div>
-      <!-- {{lyricList.lrcContent}} -->
+      <Lyric :lrcUrl="playData.songinfo.lrclink"></Lyric>
     </div>
 
 
-    <div style="margin-top:110px">
+    <div>
       <div style="float:left; " @click='toggleColor'>
         <i class="mui-icon-extra mui-icon-extra-heart-filled" ref='changeColor'></i>
       </div>
@@ -39,14 +39,17 @@
       muted
       style="margin-top:20px"
       :src="playData.bitrate.show_link"
+      ref="audio"
     >
-      <source />
     </audio>
   </div>
 </template>
 <script>
-import $ from "jquery";
+import Lyric from '../lyric/Lyric.vue'
 export default {
+  components:{
+    Lyric
+  },
   data() {
     return {
       flag:true,
@@ -55,7 +58,8 @@ export default {
           show_link: ""
         },
         songinfo: {
-          title: ""
+          title: "",
+          lrclink:""
         }
       },
       imgObj: {
@@ -65,26 +69,30 @@ export default {
         title: "",
         author: ""
       },
-      // 获取歌词
-      lyricList: {
-        lrcContent: ""
-      },
       musicList: [],
 
+     
     };
   },
   created() {
     this.getMusic();
-    this.getLyricList();
+    
   },
-
+  mounted(){
+    //每次时间更新触发这个函数
+    this.$refs.audio.addEventListener("timeupdate",()=>{
+      // console.log(this.$refs.audio.currentTime)
+      this.$store.commit("changeCurrentTime",{currentTime:this.$refs.audio.currentTime})
+    })
+  },
   methods: {
     //获取歌曲接口
     getMusic() {
-      console.log(this.$route.params.song_id)
+      
+      // console.log(this.$route.params.song_id)
       const musicUrl =
-        this.HOST +
-        "/v1/restserver/ting?method=baidu.ting.song.play&songid=" +
+        
+        "/url/v1/restserver/ting?method=baidu.ting.song.playAAC&songid=" +
         this.$route.params.song_id;
       this.$axios
         .get(musicUrl)
@@ -98,22 +106,7 @@ export default {
         .catch();
     },
 
-    //歌词接口
-    getLyricList() {
-      const lyricListUrl =
-        this.HOST +
-        "/v1/restserver/ting?method=baidu.ting.song.lry&songid=" +
-        this.$route.params.song_id;
-      this.$axios
-        .get(lyricListUrl)
-        .then(result => {
-          // console.log(result);
-          this.lyricList.lrcContent = result.data.lrcContent;
-          // console.log(this.lyricList.lrcContent);
-        })
-        .catch();
-    },
-
+    
     //切换红心颜色
     toggleColor(){
       if(this.flag){
@@ -124,6 +117,16 @@ export default {
 				this.flag = true;
       }
     }
+  },
+  computed:{
+    prossTime(){
+      return this.$store.state.prossTime
+    }
+  },
+  watch:{
+    prossTime(){
+      this.$refs.audio.currentTime = this.prossTime;
+    }
   }
 };
 </script>
@@ -132,7 +135,6 @@ export default {
   padding: 20px;
 }
 .con {
-  margin-top: 50px;
   text-align: center;
 }
 </style>

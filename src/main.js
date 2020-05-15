@@ -18,7 +18,7 @@ Vue.prototype.$axios = axios
 Vue.use(VueAxios, axios)
 Vue.use(VueAxios, http)
 Vue.prototype.HOST = '/api'
-// Vue.prototype.HOST1 = '/api1'
+// Vue.prototype.HOST1 = '/url'
 
 
 //导入mint-ui
@@ -48,17 +48,33 @@ Vue.use(List);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+
+
+//创建vuex对象实例     先创建store 再在vue中调用，否则会报错
+let store = new Vuex.Store({
+  state:{
+    //audio时间
+    currentTime:0,
+    //播放进度属性
+    prossTime:0
+  },
+  mutations:{
+    //修改currentTime
+    changeCurrentTime(state,{currentTime}){
+        state.currentTime = currentTime
+    },
+    //修改prosstime
+    changeProssTime(state,{prossTime}){
+      state.prossTime = prossTime
+    }
+  },
+  getters:{}
+})
+
 new Vue({
   el: '#app',
   router,
   components: { App },
   template: '<App/>',
   store
-})
-
-//创建vuex对象实例
-const store = new Vuex.Store({
-  state:{},
-  mutations:{},
-  getters:{}
 })

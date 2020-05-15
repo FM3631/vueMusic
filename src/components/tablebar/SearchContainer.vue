@@ -39,8 +39,9 @@ export default {
     };
   },
   created() {
-    this.onSearch()
+    // this.onSearch()
     // localStorage.clear()
+    this.historyList = JSON.parse(localStorage.getItem("history") || "[]");
   },
   methods: {
     clear(){
@@ -62,16 +63,18 @@ export default {
         .catch();
 
       //将历史记录存到localStorage里
-      // localStorage.getItem(this.value)
 
       var con = { id: Date.now(), person: this.value };
       // console.log(con);
-      var list = JSON.parse(localStorage.getItem("history") || "[]");
+      // var list = JSON.parse(localStorage.getItem("history") || "[]");
       // console.log(list);
-      list.push(con);
-      localStorage.setItem("history", JSON.stringify(list));
-      this.historyList = list;
-      console.log(this.historyList)
+      // list.push(con);
+      this.historyList.push(con)
+      // localStorage.setItem("history", JSON.stringify(list));
+      localStorage.setItem("history", JSON.stringify(this.historyList));
+      
+     /*  this.historyList = list;
+      console.log(this.historyList) */
       // Toast(val);
     },
     onCancel() {
